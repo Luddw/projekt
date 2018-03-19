@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+html, body {
+    height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #1e1e33;
+}
+
+.flex-container {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=text]:focus {
+    background-color: lightblue;
+
+}
+
+.flex-item {
+
+    border-radius: 5px;
+    background-color: #2f2f4f;
+    color: white;
+    font-size: 2em;
+    text-align: left;
+    box-shadow: 0px 15px 15px 0px #0f0f1e;
+}
+
+#logform {
+    margin: 0;
+    padding: 0;
+
+}
+.logText {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.7em;
+    color: white;
+
+}
+input[type=submit] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    body .holygrail-body {
+    flex-direction: column;
+ }
+
+body .holygrail-body .nav, body .holygrail-body .aside {
+    width: 100%;
+ }
+}
