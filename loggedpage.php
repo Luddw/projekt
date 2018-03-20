@@ -11,13 +11,15 @@ $timezone = date_default_timezone_get();
 $date = date('m/d/Y h:i:s a', time());
     if (isset($_POST['send'])) {
 
-        $sql = "INSERT INTO ";
 
+        $sql = "INSERT INTO posts (user, posttext, postdate) VALUES (:user, :ptext,  '$date')";
+        echo "$sql";
         $ps = $db->prepare($sql);
 
 
         $ps->bindValue(':user', $loggeduser);
-        $ps->bindValue(':text', $_POST['text']);
+        $ps->bindValue(':ptext', $_POST['textarea']);
+
 
 
 
@@ -71,7 +73,7 @@ $date = date('m/d/Y h:i:s a', time());
             <div class="content-item-left">
 
                 <form method="post">
-                    <textarea name="text" class="postText" cols="48" rows="4" wrap="soft">
+                    <textarea name="textarea" class="postText" cols="48" rows="4" wrap="soft">
                     </textarea>
                     <input type="submit" name="send" value="Post">
                 </form>
@@ -107,6 +109,7 @@ $date = date('m/d/Y h:i:s a', time());
                   echo "<p>ID:$id User: $user Date: $date </p>";
                   echo "<img src='$img'>";
                   echo " $text ";
+                  echo " <br> <br> <br> ";
               }
 
 
