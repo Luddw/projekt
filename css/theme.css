@@ -136,7 +136,7 @@ textarea {
     padding: 0;
     height: 100%;
     border: solid black 1px;
-    width: 100;
+    width: 25   %;
 
 }
 
@@ -145,7 +145,9 @@ textarea {
     body .holygrail-body {
     flex-direction: column;
  }
-
+content {
+    flex-direction: column;
+}
  .navigation {
     justify-content: space-around;
   }
@@ -171,6 +173,7 @@ body .holygrail-body .nav, body .holygrail-body .aside, .content-item-left{
   .usercontrol {
       flex-direction: column;
       height: 100%;
+      width: 100%;
   }
   input[type=submit] {
       width: 100%;
@@ -179,5 +182,9 @@ body .holygrail-body .nav, body .holygrail-body .aside, .content-item-left{
 
   .navigation li:last-of-type a {
     border-bottom: none;
+  }
+  content {
+      flex-direction: column;
+      width: 100%;
   }
 }

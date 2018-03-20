@@ -7,6 +7,27 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
     $message = "";
 
 $loggeduser = $_SESSION['username'];
+$timezone = date_default_timezone_get();
+$date = date('m/d/Y h:i:s a', time());
+    if (isset($_POST['send'])) {
+
+        $sql = "INSERT INTO ";
+
+        $ps = $db->prepare($sql);
+
+
+        $ps->bindValue(':user', $loggeduser);
+        $ps->bindValue(':text', $_POST['text']);
+
+
+
+
+        $ps->execute();
+
+    }
+
+
+
 
 
  ?>
@@ -34,10 +55,10 @@ $loggeduser = $_SESSION['username'];
     </h1>
 </header>
 <ul class="navigation">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">About</a></li>
-  <li><a href="#">Products</a></li>
-  <li><a href="#">Contact</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
 </ul>
 <div class="holygrail-body">
 
@@ -50,7 +71,7 @@ $loggeduser = $_SESSION['username'];
             <div class="content-item-left">
 
                 <form method="post">
-                    <textarea name="postText" class="postText" cols="48" rows="4" tabindex="4" wrap="soft">
+                    <textarea name="text" class="postText" cols="48" rows="4" wrap="soft">
                     </textarea>
                     <input type="submit" name="send" value="Post">
                 </form>
@@ -77,9 +98,9 @@ $loggeduser = $_SESSION['username'];
               while ($row = $ps->fetch()) {
                   $id = $row['postID'];
                   $user = $row['user'];
-                  $text = $row['text'];
+                  $text = $row['posttext'];
                   $img = $row['img'];
-                  $date = $row['date'];
+                  $date = $row['postdate'];
 
 
 
