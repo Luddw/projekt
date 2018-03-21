@@ -5,27 +5,42 @@ include "../config.php";
 $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
     $username, $password);
     $message = "";
-
+    $msg = "";
 $loggeduser = $_SESSION['username'];
 $timezone = date_default_timezone_get();
 $date = date('m/d/Y h:i:s a', time());
     if (isset($_POST['send'])) {
+        // path to store the uploaded image
+        $target = "uploads/".basename($_FILES['file']['name']);
+
+        // image data
+        $image = $_FILES['file']['name'];
+
+        $sql = "INSERT INTO posts (user, posttext, img, postdate) VALUES (:user, :ptext, '$image', '$date')";
+        mysqli_query($db, $sql);
 
 
-        $sql = "INSERT INTO posts (user, posttext, postdate) VALUES (:user, :ptext,  '$date')";
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $target))
+        {
+            $msg = "Image Uploaded success";
+        }
+        else {
+            $msg = "Image Upload Failed";
+        }
+
+
         echo "$sql";
+        echo "<br>$msg";
         $ps = $db->prepare($sql);
+
+
+
 
 
         $ps->bindValue(':user', $loggeduser);
         $ps->bindValue(':ptext', $_POST['textarea']);
 
-
-
-
-
         $ps->execute();
-
     }
 
 
@@ -71,6 +86,13 @@ $date = date('m/d/Y h:i:s a', time());
 
 
             <div class="content-item-left">
+
+                <form method="post" action="index.php" enctype="multipart/form-data">
+                    <input type="hidden" name="size" value="1000000">
+                    <div>
+                        <input type="file" name="file">
+                    </div>
+                </form>
 
                 <form method="post">
                     <textarea name="textarea" class="postText" cols="48" rows="4" wrap="soft">
