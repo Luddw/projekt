@@ -29,14 +29,13 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
 ?>
 
 
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang='sv'>
 <head>
-    <lang='sv'>
+    <title>Log In</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/logtheme.css">
-    <title>Log In</title>
 </head>
 
 <body>

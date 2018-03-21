@@ -10,24 +10,11 @@ $loggeduser = $_SESSION['username'];
 $timezone = date_default_timezone_get();
 $date = date('m/d/Y h:i:s a', time());
     if (isset($_POST['send'])) {
-        // path to store the uploaded image
-        $target = "uploads/".basename($_FILES['file']['name']);
 
-        // image data
-        $image = $_FILES['file']['name'];
+        $image = $_FILES['image']['name'];
+        $target = "uploads/".basename($image);
 
-        $sql = "INSERT INTO posts (user, posttext, img, postdate) VALUES (:user, :ptext, '$image', '$date')";
-        mysqli_query($db, $sql);
-
-
-        if (move_uploaded_file($_FILES['file']['tmp_name'], $target))
-        {
-            $msg = "Image Uploaded success";
-        }
-        else {
-            $msg = "Image Upload Failed";
-        }
-
+        $sql = "INSERT INTO posts (user, posttext, img, postdate) VALUES (:user, :ptext, '$image', :date)";
 
         echo "$sql";
         echo "<br>$msg";
@@ -35,12 +22,22 @@ $date = date('m/d/Y h:i:s a', time());
 
 
 
-
-
         $ps->bindValue(':user', $loggeduser);
         $ps->bindValue(':ptext', $_POST['textarea']);
+        $ps->bindValue(':user', $loggeduser);
+        $ps->bindValue(':date', $date);
 
         $ps->execute();
+
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+  		$msg = "Image uploaded successfully";
+
+  	    }
+
+        else {
+  		$msg = "Failed to upload image";
+
+        }
     }
 
 
@@ -87,14 +84,14 @@ $date = date('m/d/Y h:i:s a', time());
 
             <div class="content-item-left">
 
-                <form method="post" action="index.php" enctype="multipart/form-data">
-                    <input type="hidden" name="size" value="1000000">
-                    <div>
-                        <input type="file" name="file">
-                    </div>
-                </form>
 
-                <form method="post">
+
+                <form method="post" action="loggedpage.php" enctype="multipart/form-data">
+                    <input  type="hidden" name"size" value="1000000">
+                    <div>
+                        <input type="file" name="image">
+                    </div>
+
                     <textarea name="textarea" class="postText" cols="48" rows="4" wrap="soft">
                     </textarea>
                     <input type="submit" name="send" value="Post">
@@ -129,8 +126,11 @@ $date = date('m/d/Y h:i:s a', time());
 
 
                   echo "<p>ID:$id User: $user Date: $date </p>";
-                  echo "<img src='$img'>";
+                  echo "<img src='uploads/$img'>'";
                   echo " $text ";
+
+
+
                   echo " <br> <br> <br> ";
               }
 
