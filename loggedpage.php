@@ -6,15 +6,18 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
     $username, $password);
     $message = "";
     $msg = "";
+
 $loggeduser = $_SESSION['username'];
-$timezone = date_default_timezone_get();
-$date = date('m/d/Y h:i:s a', time());
+
+
+$date = date("Y-m-d");
+
     if (isset($_POST['send'])) {
 
         $image = $_FILES['image']['name'];
         $target = "uploads/".basename($image);
 
-        $sql = "INSERT INTO posts (user, posttext, img, postdate) VALUES (:user, :ptext, '$image', :date)";
+        $sql = "INSERT INTO posts (user, posttext, img, postdate) VALUES (:user, :ptext, '$image', '$date')";
 
         echo "$sql";
         echo "<br>$msg";
@@ -24,7 +27,7 @@ $date = date('m/d/Y h:i:s a', time());
 
         $ps->bindValue(':user', $loggeduser);
         $ps->bindValue(':ptext', $_POST['textarea']);
-        $ps->bindValue(':date', $date);
+
 
         $ps->execute();
 
@@ -79,21 +82,19 @@ $date = date('m/d/Y h:i:s a', time());
 
         <div class="usercontrol">
 
-
-
             <div class="content-item-left">
 
-
-
                 <form method="post" action="loggedpage.php" enctype="multipart/form-data">
-                    <input  type="hidden" name"size" value="1000000">
-                    <div>
-                        <input type="file" name="image">
-                    </div>
 
-                    <textarea name="textarea" class="postText" cols="48" rows="4" wrap="soft">
+                    <input  type="hidden" name"size" value="1000000">
+
+                        <input type="file" name="image">
+
+
+                    <textarea name="textarea" class="postText" cols="48" rows="4" wrap="soft" placeholder="Text here...">
                     </textarea>
                     <input type="submit" name="send" value="Post">
+
                 </form>
 
             </div>

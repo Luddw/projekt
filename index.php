@@ -28,7 +28,6 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
     }
 ?>
 
-
 <!DOCTYPE html>
 <html lang='sv'>
 <head>
@@ -50,12 +49,29 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
 
                   <p>
                       Password:
-                      <input type='text' name='password' placeholder="Password">
+                      <input type='password' name='password' placeholder="Password">
                   </p>
               </div>
                     <br>
                     <input type='submit' name='login' value='Logga in'>
           </form>
+
+          <form class='flex-item' method='post'>
+                <div class='logText'>
+                    <p>
+                        Username:
+                        <input type='text' name='username' placeholder="Username">
+                    </p>
+
+                    <p>
+                        Password:
+                        <input type='password' name='password' placeholder="Password">
+                    </p>
+                </div>
+                      <br>
+                      <input type='submit' name='login' value='Logga in'>
+            </form>
+
     </div>
 
 
