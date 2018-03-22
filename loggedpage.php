@@ -24,7 +24,6 @@ $date = date('m/d/Y h:i:s a', time());
 
         $ps->bindValue(':user', $loggeduser);
         $ps->bindValue(':ptext', $_POST['textarea']);
-        $ps->bindValue(':user', $loggeduser);
         $ps->bindValue(':date', $date);
 
         $ps->execute();
@@ -45,7 +44,7 @@ $date = date('m/d/Y h:i:s a', time());
 
 
  ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="sv">
 
 <head>
