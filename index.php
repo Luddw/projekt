@@ -67,6 +67,15 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
                         Password:
                         <input type='password' name='password' placeholder="Password">
                     </p>
+                    <p>
+                        Username:
+                        <input type='text' name='username' placeholder="Username">
+                    </p>
+
+                    <p>
+                        Password:
+                        <input type='password' name='password' placeholder="Password">
+                    </p>
                 </div>
                       <br>
                       <input type='submit' name='login' value='Logga in'>
