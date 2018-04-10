@@ -32,9 +32,18 @@ input[type=text]:focus {
 
 }
 
+.statusmsg{
+    font-size: 24px;
+    color: white;
+    padding: 3px;
+    background: black;
+    border: 1px solid #DFDFDF;
+}
+
+
 .flex-item {
     width: 100%;
-    max-width: 250px;
+    max-width: 300px;
     border-radius: 5px;
     background-color: #2f2f4f;
     color: white;
@@ -73,7 +82,7 @@ input[type=submit] {
 
  }
     body .flex-item {
-
+    margin-top: 15px;
 
  }
 
