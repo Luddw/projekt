@@ -88,7 +88,7 @@ $date = date("Y-m-d");
 
                     <input  type="hidden" name"size" value="1000000">
 
-                        <input type="file" name="image">
+                        <input type="file" name="image" accept="image/*">
 
 
                     <textarea name="textarea" class="postText" cols="48" rows="4" wrap="soft" placeholder="Text here...">
