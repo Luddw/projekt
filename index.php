@@ -7,6 +7,7 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
     $password = "";
     $username = "";
     $email = "";
+    $name = "";
 
 
     if (isset($_POST['login'])) {
@@ -32,22 +33,48 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
 
     if (isset($_POST['signup']))
     {
-        if(isset($_POST['name']) && !empty($_POST['name']) AND isset($_POST['password']) && !empty($_POST[password])
-        AND isset($_POST['email']) && !empty($_POST['email']))
+        if(strlen($_POST['username']) > 0 && strlen($_POST['password']) > 0 && strlen($_POST['email']) > 0)
         {
+            echo "success success success success success success success success success success success ";
             if ($_POST['password'] == $_POST['passwordconf'])
             {
-                $name = mysql_escape_string($_POST['name']);
-                $password = mysql_escape_string($_POST['password']);
-                $email = mysql_escape_string($_POST['email']);
 
-                if(!eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email)) {
+
+
+                if(filter_var($_POST['email'] , FILTER_VALIDATE_EMAIL)) {
                 // Error - Invalid mail
-                $msg = 'The email you have entered is invalid, please try again.';
+                echo 'Your account has been made, <br> please verify it by clicking the activation link that has been send to your email.';
+
+                $to = 'kingboo8@hotmail.com';
+                $subject = 'E-mail Verification';
+                $message = '
+                Thanks for signing up!
+                Your account has been created
+
+                Account info:
+                ------------------------
+                Username: '.$name.'
+                Password: '.$password.'
+                ------------------------
+
+                Please click this link to activate your account:
+                https://www.google.se/
+                '; // Our message above including the link
+                    // http://www.yourwebsite.com/verify.php?email='.$email.'&hash='.$hash.'
+                $headers = 'From:noreply@luddw.com' . "\r\n";
+                mail($to, $subject, $message, $headers);
+
+
+
+
+
+
+
                 }
                 else {
                 // Success - Valid mail
-                $msg = 'Your account has been made, <br> please verify it by clicking the activation link that has been send to your email.';
+                echo 'The email you have entered is invalid, please try again.';
+
                 }
 
             }
@@ -65,11 +92,7 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
 </head>
 
 <body>
-    <?php
-        if (isset($msg)) {
-            echo $msg;
-        }
-    ?>
+
     <div class="flex-container">
 
         <form class='flex-item' method='post'>

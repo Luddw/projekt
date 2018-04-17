@@ -70,12 +70,7 @@ $date = date("Y-m-d");
     ?>
     </h1>
 </header>
-<ul class="navigation">
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-</ul>
+
 <div class="holygrail-body">
 
 <div class="content">
@@ -148,6 +143,6 @@ $date = date("Y-m-d");
 
 
 </div>
-<footer class="footer">Footer</footer>
+<!---<footer class="footer">Footer</footer> --->
 </body>
 </html>
