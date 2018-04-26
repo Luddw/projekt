@@ -178,49 +178,7 @@ textarea {
 
 
 @media (max-width: 800px) {
-    body .holygrail-body {
-    flex-direction: column;
+.content {
+    flex-direction: row;
  }
-content {
-    flex-direction: column;
-}
- .navigation {
-    justify-content: space-around;
-  }
-
-body .holygrail-body .nav, body .holygrail-body .aside, .content-item-left{
-    width: 100%;
- }
-}
-
-
-@media all and (max-width: 600px) {
-  .navigation {
-    flex-flow: column wrap;
-    padding: 0;
-  }
-
-  .navigation a {
-    text-align: center;
-    padding: 10px;
-    border-top: 1px solid rgba(255,255,255,0.3);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-  }
-  .usercontrol {
-      flex-direction: column;
-      height: 100%;
-      width: 100%;
-  }
-  input[type=submit] {
-      width: 100%;
-      height: 20%;
-  }
-
-  .navigation li:last-of-type a {
-    border-bottom: none;
-  }
-  content {
-      flex-direction: column;
-      width: 100%;
-  }
 }

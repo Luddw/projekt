@@ -128,6 +128,7 @@ if (!isset($_SESSION['username'])) {
 
               // Hämta rad-för-rad så länge det finns
               // någon rad att hämta
+              
               while ($row = $ps->fetch()) {
                   $id = $row['postID'];
                   $user = $row['user'];
@@ -138,8 +139,8 @@ if (!isset($_SESSION['username'])) {
 
                   echo "<div class='posts'>";
 
-                  echo "<p>ID:$id User: $user Date: $date </p>";
-                  echo "<br><p class='textPost'> $text </p>";
+                  echo "<p>ID:$id User: $user Date:$date</p>";
+                  echo "<br><p class='textPost'>$text</p>";
                   echo "<img class='postsimg'src='uploads/$img'>'";
 
                   echo "</div>";
