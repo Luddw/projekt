@@ -8,9 +8,14 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
     $msg = "";
 
 $loggeduser = $_SESSION['username'];
-
-
 $date = date("Y-m-d");
+
+if (!isset($_SESSION['username'])) {
+    unset($_SESSION['username']);
+    header('Location: index.php');
+
+    exit;
+}
 
     if (isset($_POST['send'])) {
 
@@ -86,14 +91,26 @@ $date = date("Y-m-d");
                         <input type="file" name="image" accept="image/*">
 
 
-                    <textarea name="textarea" class="postText" cols="48" rows="4" wrap="soft" placeholder="Text here...">
-                    </textarea>
+                    <textarea name="textarea" class="postText" maxlength="185" placeholder="Text here..." wrap="softs" rows="5"></textarea>
                     <input type="submit" name="send" value="Post">
 
                 </form>
 
-            </div>
+                <form method="post">
+                    <?php
+                    if (isset($_POST['logout'])) {
+                        # code...
 
+                    unset($_SESSION['username']);
+                    header('Location: loggedpage.php');
+
+                    exit;
+                    }
+                    ?>
+                    <input type="submit" name="logout" value="log out">
+                </form>
+
+            </div>
 
 
 
@@ -119,10 +136,13 @@ $date = date("Y-m-d");
                   $date = $row['postdate'];
 
 
+                  echo "<div class='posts'>";
 
                   echo "<p>ID:$id User: $user Date: $date </p>";
-                  echo "<img src='uploads/$img'>'";
-                  echo " $text ";
+                  echo "<br><p class='textPost'> $text </p>";
+                  echo "<img class='postsimg'src='uploads/$img'>'";
+
+                  echo "</div>";
 
 
 
