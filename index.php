@@ -33,50 +33,21 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
 
     if (isset($_POST['signup']))
     {
-        if(strlen($_POST['username']) > 0 && strlen($_POST['password']) > 0 && strlen($_POST['email']) > 0)
+        if($_POST['username'] != "" && $_POST['password'] != "")
         {
-            echo "success success success success success success success success success success success ";
             if ($_POST['password'] == $_POST['passwordconf'])
             {
+                $sql = "INSERT INTO user (username, password ) VALUES (:username, :password)";
 
+                // 2) Skapa ett 'prepared statement'
+                $ps = $db->prepare($sql);
 
+                // 3) Knyt värden till platshållarna
+                $ps->bindValue(':username', $_POST['username']);
+                $ps->bindValue(':password', $_POST['password']);
 
-                if(filter_var($_POST['email'] , FILTER_VALIDATE_EMAIL)) {
-                // Error - Invalid mail
-                echo 'Your account has been made, <br> please verify it by clicking the activation link that has been send to your email.';
-
-                $to = 'kingboo8@hotmail.com';
-                $subject = 'E-mail Verification';
-                $message = '
-                Thanks for signing up!
-                Your account has been created
-
-                Account info:
-                ------------------------
-                Username: '.$name.'
-                Password: '.$password.'
-                ------------------------
-
-                Please click this link to activate your account:
-                https://www.google.se/
-                '; // Our message above including the link
-                    // http://www.yourwebsite.com/verify.php?email='.$email.'&hash='.$hash.'
-                $headers = 'From:noreply@luddw.com' . "\r\n";
-                mail($to, $subject, $message, $headers);
-
-
-
-
-
-
-
-                }
-                else {
-                // Success - Valid mail
-                echo 'The email you have entered is invalid, please try again.';
-
-                }
-
+                // 4) Kör frågan
+                $ps->execute();
             }
         }
     }
@@ -125,11 +96,6 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
                     <p>
                         Password Confirm:
                         <input type='password' name='passwordconf' placeholder="Password (again)">
-                    </p>
-
-                    <p>
-                        E-mail:
-                        <input type='text' name='email' placeholder="E-mail">
                     </p>
                 </div>
                       <br>
