@@ -1,12 +1,12 @@
 html {
-    background: white;
+    background: #a4dad2;
 }
 
 body .header {
     display: flex;
     width: 100%;
     height: 8%;
-    background: #2f2f4f;
+    background: #1e439b;
     font-size: 24pt;
     justify-content: space-between;
     color: white;
@@ -23,7 +23,7 @@ body .header {
     border-radius: 3px;
     display: flex;
     flex-direction: column;
-    background-color: #5e5ea0;
+    background-color: #0086cb;
     color: white;
     padding: 5px;
     margin-left: 5px;
@@ -33,35 +33,38 @@ body .header {
 .postsimg {
     order: -1;
     max-width: 300px;
-
+    height: 100%;
+    min-height: 300px;
+}
+hr {
+    color: rgba(255 , 255, 255, 0.3);
+    width: 100%;
 }
 .textPost {
 
+    width: 100%;
+    max-width: 250px;
+    text-align: left;
+    word-wrap: break-word;
+    margin-left: 5px;
 }
-
-.navigation {
-  list-style: none;
-  margin: 0;
-  background: #2f2f4f;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-end;
+.postcontent {
+    display: flex;
+    align-items: flex-start;
 }
+.textinfo {
+    font-weight: normal;
+    font-family: sans-serif;
+    font-size: 12pt;
+    margin: 5px;
+    order: -1;
+    flex-flow: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    max-width: 300px;
 
-.navigation a {
-  text-decoration: none;
-  display: block;
-  padding: 1em;
-  color: white;
 }
-
-.navigation a:hover {
-  background: #23233d;
-}
-
-
-
-
 body {
     display: flex;
     flex-direction: column;
@@ -95,7 +98,7 @@ body .holygrail-body .content {
     flex-direction: row;
     width: 100%;
     height: 30%;
-    color: black;
+
 }
 
 
@@ -117,7 +120,7 @@ body .holygrail-body .content {
 }
 
 input[type=submit] {
-    background-color: black;
+    background-color: #1d136a;
     border: none;
     color: white;
     padding: 14px 24px;
@@ -130,11 +133,11 @@ input[type=submit] {
     margin-top: 1px;
 }
 input[type=submit]:hover {
-    background-color: #111111;
-    color: red;
+    background-color: #1b51a6;
+
 }
 input[type=submit]:focus {
-    border: red 1px solid;
+    border: #2f2f4f 1px solid;
 }
 
 
@@ -154,17 +157,11 @@ input[type=submit]:focus {
     justify-content: space-around;
     width: 25%;
     height: 100%;
-    background-color: #2f2e6f;
+    background-color: #0086cb;
     color: white;
 
 }
 
-
-body .footer {
-    width: 100%;
-    height: 60px;
-    background: cyan;
-}
 
 textarea {
     resize: none;

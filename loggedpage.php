@@ -24,8 +24,7 @@ if (!isset($_SESSION['username'])) {
 
         $sql = "INSERT INTO posts (user, posttext, img, postdate) VALUES (:user, :ptext, '$image', '$date')";
 
-        echo "$sql";
-        echo "<br>$msg";
+
         $ps = $db->prepare($sql);
 
 
@@ -107,7 +106,7 @@ if (!isset($_SESSION['username'])) {
                     exit;
                     }
                     ?>
-                    <input type="submit" name="logout" value="log out">
+                    <input type="submit" name="logout" value="Log out">
                 </form>
 
             </div>
@@ -128,7 +127,7 @@ if (!isset($_SESSION['username'])) {
 
               // Hämta rad-för-rad så länge det finns
               // någon rad att hämta
-              
+
               while ($row = $ps->fetch()) {
                   $id = $row['postID'];
                   $user = $row['user'];
@@ -139,15 +138,19 @@ if (!isset($_SESSION['username'])) {
 
                   echo "<div class='posts'>";
 
-                  echo "<p>ID:$id User: $user Date:$date</p>";
-                  echo "<br><p class='textPost'>$text</p>";
-                  echo "<img class='postsimg'src='uploads/$img'>'";
-
+                      echo "<div class='textinfo'>";
+                          echo "<p>ID:$id User: $user Date:$date</p>";
+                      echo "</div>";
+                      echo "<hr>";
+                      echo "<div class='postcontent'>";
+                      echo "<img class='postsimg'src='uploads/$img'>";
+                      echo "<br><p class='textPost'>$text</p>";
+                      echo "</div>";
                   echo "</div>";
 
 
 
-                  echo " <br> <br> <br> ";
+                  echo " <br> <br> <br>";
               }
 
 

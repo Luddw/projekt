@@ -6,7 +6,7 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
     $message = "";
     $password = "";
     $username = "";
-    $email = "";
+    
     $name = "";
 
 
