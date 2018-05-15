@@ -6,7 +6,7 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
     $message = "";
     $password = "";
     $username = "";
-    
+
     $name = "";
 
 
@@ -85,6 +85,7 @@ $db = new PDO("mysql:host=localhost;dbname={$dbprefix}projektdb;charset=utf8",
           <form class='flex-item' method='post'>
                 <div class='logText'>
                     <p>
+
                         Username:
                         <input type='text' name='username' placeholder="Username">
                     </p>
